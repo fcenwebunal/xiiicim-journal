@@ -1534,6 +1534,224 @@
       .journal-editores-grid { grid-template-columns: 1fr; }
     }
 
+    /* Directrices generales */
+    .journal-guidelines { margin-bottom: 2.5rem; }
+    .journal-intro-lead { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.85); text-align: justify; margin-bottom: 2rem; }
+    .journal-guidelines-lista { display: grid; gap: 0.75rem; }
+    .journal-guidelines-lista li {
+      position: relative;
+      padding: 0.9rem 1.1rem 0.9rem 2.4rem;
+      background: rgba(255,255,255,0.04);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 0.6rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.82);
+    }
+    .journal-guidelines-lista li::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 1.35rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-acento);
+    }
+
+    .journal-selected-title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 900;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+    }
+    .journal-selected-title span { color: var(--color-acento); }
+
+    /* Bloque principal: info de la revista (izq) + libro (der) */
+    .journal-main {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Datos de la revista con énfasis en el cuartil */
+    .journal-datos {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-bottom: 1.75rem;
+    }
+    .journal-quartile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(135deg, rgba(173,255,47,0.16), rgba(173,255,47,0.04));
+      border: 0.125rem solid var(--color-acento);
+      border-radius: 0.9rem;
+      text-decoration: none;
+      transition: transform var(--transicion), box-shadow var(--transicion);
+    }
+    .journal-quartile:hover { transform: translateY(-0.25rem); box-shadow: 0 0.75rem 2rem rgba(173,255,47,0.18); }
+    .journal-quartile-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+    .journal-quartile-valor { font-family: var(--fuente-titulo); font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 900; color: var(--color-acento); line-height: 1; }
+    .journal-quartile-fuente { font-size: 0.65rem; color: rgba(255,255,255,0.55); display: inline-flex; align-items: center; gap: 0.25rem; }
+    .journal-metricas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .journal-metrica-card {
+      background: rgba(255,255,255,0.04);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 0.6rem;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.15rem;
+    }
+    .journal-metrica-card .m-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); }
+    .journal-metrica-card .m-valor { font-family: var(--fuente-titulo); font-size: 1.05rem; font-weight: 700; color: white; }
+
+    /* Animación del libro con portada */
+    .journal-libro-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 90rem;
+    }
+    .journal-libro {
+      position: relative;
+      width: 17rem;
+      aspect-ratio: 3 / 4;
+      transform-style: preserve-3d;
+      transform: rotateY(-24deg) rotateX(4deg);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: libro-flotar 5s ease-in-out infinite;
+    }
+    .journal-libro-wrap:hover .journal-libro { transform: rotateY(-6deg) rotateX(2deg); }
+    .journal-libro-cara {
+      position: absolute;
+      inset: 0;
+      border-radius: 0.25rem 0.6rem 0.6rem 0.25rem;
+      backface-visibility: hidden;
+    }
+    .journal-libro-portada {
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 1.5rem 3rem rgba(0,0,0,0.55);
+      transform: translateZ(1rem);
+      overflow: hidden;
+    }
+    .journal-libro-portada::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 35%);
+    }
+    .journal-libro-lomo {
+      width: 2rem;
+      left: -1rem;
+      transform: rotateY(90deg) translateZ(-0.9rem);
+      background: linear-gradient(to right, #0a1936, #16305f);
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+    .journal-libro-paginas {
+      right: -0.4rem;
+      width: 1.9rem;
+      transform: rotateY(90deg) translateX(0.4rem) translateZ(15.6rem);
+      background: repeating-linear-gradient(to right, #f4f6fb, #f4f6fb 0.06rem, #d7ddea 0.07rem, #d7ddea 0.12rem);
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+    @keyframes libro-flotar {
+      0%, 100% { transform: rotateY(-24deg) rotateX(4deg) translateY(0); }
+      50% { transform: rotateY(-24deg) rotateX(4deg) translateY(-0.75rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .journal-libro { animation: none; }
+    }
+
+    /* Botón con icono a la izquierda del texto */
+    .journal-boton-enlace {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .journal-boton-enlace svg { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+
+    .journal-guide-link { margin-top: 1rem; }
+
+    /* Editores: ejecutivo (jefe) a la izquierda, invitados a la derecha */
+    .journal-editores-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.6fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .journal-editor-exec {
+      background: linear-gradient(150deg, rgba(173,255,47,0.12), rgba(255,255,255,0.03));
+      border: 0.125rem solid rgba(173,255,47,0.45);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0.75rem 2rem rgba(0,0,0,0.35);
+    }
+    .journal-editor-exec .ee-badge {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: #111;
+      background: var(--color-acento);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .journal-editor-exec img {
+      width: 8.5rem;
+      height: 8.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.1rem;
+      border: 0.1875rem solid var(--color-acento);
+      box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.4);
+    }
+    .journal-editor-exec .ee-nombre { font-family: var(--fuente-titulo); font-size: 1.25rem; font-weight: 900; color: white; margin-bottom: 0.4rem; }
+    .journal-editor-exec .ee-rol { font-size: 0.85rem; color: var(--color-acento); font-weight: 700; margin-bottom: 0.5rem; }
+    .journal-editor-exec .ee-inst { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.4; margin-bottom: 0.6rem; }
+    .journal-editor-exec .ee-pais { font-size: 0.85rem; color: rgba(255,255,255,0.8); display: inline-flex; align-items: center; gap: 0.35rem; }
+    .journal-editores-invitados {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .journal-editor-card .je-inst { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin-bottom: 0.6rem; }
+
+    @media (max-width: 62rem) {
+      .journal-main { grid-template-columns: 1fr; }
+      .journal-libro-wrap { order: -1; }
+      .journal-editores-layout { grid-template-columns: 1fr; }
+      .journal-editores-invitados { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 40rem) {
+      .journal-datos { grid-template-columns: 1fr; }
+      .journal-editores-invitados { grid-template-columns: 1fr; }
+    }
+
     /* ENTÉRATE — tema claro, como Ponentes */
     #enterate {
       padding: var(--espaciado-seccion) 0;
@@ -2097,7 +2315,7 @@
             <li><a href="#pagos" role="menuitem" data-i18n="nav.payments">Inscripción</a></li>
             <li><a href="#programacion" role="menuitem" data-i18n="nav.schedule">Programa</a></li>
             <li><a href="#comites" role="menuitem" data-i18n="nav.committees">Comités</a></li>
-            <li><a href="#journal" role="menuitem" data-i18n="nav.journal">Journal</a></li>
+            <li><a href="#journal" role="menuitem" data-i18n="nav.journal">Special Issues</a></li>
             <li><a href="#enterate" role="menuitem" data-i18n="nav.news">Entérate</a></li>
             <li class="lang-switcher" role="none">
               <button class="lang-btn lang-btn--active" data-lang="es" onclick="setLanguage('es')" aria-label="Español" title="Español">
@@ -2120,7 +2338,7 @@
           <a href="#pagos" data-i18n="nav.payments">Inscripción</a>
           <a href="#programacion" data-i18n="nav.schedule">Programa</a>
           <a href="#comites" data-i18n="nav.committees">Comités</a>
-          <a href="#journal" data-i18n="nav.journal">Journal</a>
+          <a href="#journal" data-i18n="nav.journal">Special Issues</a>
           <a href="#enterate" data-i18n="nav.news">Entérate</a>
           <div class="lang-switcher-movil">
             <button class="lang-btn lang-btn--active" data-lang="es" onclick="setLanguage('es')" aria-label="Español" title="Español">
@@ -3206,66 +3424,80 @@
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
           </svg>
-          <span data-i18n="journal.title">Journal</span>
+          <span data-i18n="journal.title">Special Issues</span>
         </h2>
-        <p data-i18n="journal.intro">El Congreso impulsa la publicación científica de alto impacto: los trabajos destacados podrán postularse a una edición especial del <strong>Chemical Engineering Journal (CEJ)</strong> de Elsevier.</p>
+        <p class="journal-intro-lead" data-i18n="journal.intro">Los participantes registrados que presenten su trabajo en el <strong>XIII Congreso Internacional de Materiales (XIII CIM)</strong> tendrán la posibilidad de publicar artículos completos en una edición especial (Special Issue) de la siguiente revista, que cubre las áreas de investigación del congreso. Antes de enviar, lea con atención las directrices generales y las instrucciones específicas de preparación del manuscrito (consulte la Guía para Autores de la revista).</p>
       </div>
 
+      <!-- Directrices generales -->
+      <div class="journal-guidelines">
+        <h3 class="journal-bloque-titulo" data-i18n="journal.guidelines-title">Directrices generales</h3>
+        <ul class="journal-guidelines-lista">
+          <li data-i18n="journal.guideline1">Tras el envío del resumen y el pago de la inscripción, los autores recibirán una Carta de Invitación que confirma su estado.</li>
+          <li data-i18n="journal.guideline2">A continuación, los autores podrán dirigirse al sitio web correspondiente de la revista.</li>
+          <li data-i18n="journal.guideline3">Los manuscritos deben respetar las normas de publicación de la revista seleccionada. En particular, deben ser de alta novedad y su contenido científico de alta calidad; los datos experimentales deben ser originales y el texto no debe contener secciones publicadas previamente en la literatura.</li>
+          <li data-i18n="journal.guideline4">Todos los artículos enviados se someterán a los procedimientos habituales de revisión por pares de la revista.</li>
+        </ul>
+      </div>
+
+      <h3 class="journal-selected-title" data-i18n="journal.selected-title">Revista seleccionada para la <span>edición especial</span></h3>
+
       <div class="journal-contenido">
-        <p class="journal-nombre" data-i18n="journal.name">Chemical Engineering Journal (CEJ)</p>
+        <!-- Info de la revista (izquierda) + libro con portada (derecha) -->
+        <div class="journal-main">
+          <div class="journal-info">
+            <p class="journal-nombre" data-i18n="journal.name">Chemical Engineering Journal (CEJ)</p>
 
-        <div class="journal-metricas">
-          <span class="journal-metrica"><span class="journal-metrica-label" data-i18n="journal.metric.quartile">Cuartil</span><span class="journal-metrica-valor">Q1</span></span>
-          <span class="journal-metrica"><span class="journal-metrica-label" data-i18n="journal.metric.publisher">Editorial</span><span class="journal-metrica-valor">Elsevier</span></span>
-          <span class="journal-metrica"><span class="journal-metrica-label" data-i18n="journal.metric.issn">ISSN</span><span class="journal-metrica-valor">1385-8947</span></span>
-          <span class="journal-metrica"><span class="journal-metrica-label" data-i18n="journal.metric.if">Factor de Impacto</span><span class="journal-metrica-valor">13.2</span></span>
-          <span class="journal-metrica"><span class="journal-metrica-label" data-i18n="journal.metric.citescore">CiteScore</span><span class="journal-metrica-valor">20.6</span></span>
-        </div>
-
-        <div class="journal-si">
-          <span class="journal-si-label" data-i18n="journal.si-label">Título de la edición especial</span>
-          <span data-i18n="journal.si-title">From Waste to Resource: Advanced Oxidation/Reduction Technologies Enabling Green Transitions</span>
-        </div>
-
-        <p class="journal-desc" data-i18n="journal.desc">El Chemical Engineering Journal (CEJ) es una revista internacional Q1 de Elsevier que reúne contribuciones originales en áreas como catálisis, biotecnología e ingeniería ambiental. En el marco del XIII Congreso Internacional de Materiales se realizará un conversatorio con editores de la revista, quienes compartirán de primera mano qué esperan de una contribución y consejos nacidos de la práctica editorial. Los trabajos sobresalientes del congreso podrán ser considerados para esta edición especial.</p>
-
-        <div class="journal-bloque">
-          <h3 class="journal-bloque-titulo" data-i18n="journal.editors-title">Editores Invitados</h3>
-          <div class="journal-editores-grid">
-            <div class="journal-editor-card">
-              <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/3_KwhC4eYqU5w5mCZCuQd5J.jpg" alt="Vítor Jorge Pais Vilar">
-              <p class="je-nombre">Vítor Jorge Pais Vilar</p>
-              <p class="je-rol" data-i18n="journal.editor.vilar-role">Executive Editor – JECE · Co-ordinating Editor – CEJ</p>
-              <span class="je-pais">🇵🇹 <span data-i18n="journal.country.portugal">Portugal</span></span>
+            <div class="journal-datos">
+              <a class="journal-quartile" href="https://www.scimagojr.com/journalsearch.php?q=21100255493&tip=sid&exact=no" target="_blank" rel="noopener">
+                <span class="journal-quartile-label" data-i18n="journal.metric.quartile">Cuartil</span>
+                <span class="journal-quartile-valor">Q1</span>
+                <span class="journal-quartile-fuente">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  SCImago
+                </span>
+              </a>
+              <div class="journal-metricas-grid">
+                <div class="journal-metrica-card"><span class="m-label" data-i18n="journal.metric.publisher">Editorial</span><span class="m-valor">Elsevier</span></div>
+                <div class="journal-metrica-card"><span class="m-label" data-i18n="journal.metric.issn">ISSN</span><span class="m-valor">1385-8947</span></div>
+                <div class="journal-metrica-card"><span class="m-label" data-i18n="journal.metric.if">Factor de Impacto</span><span class="m-valor">13.2</span></div>
+                <div class="journal-metrica-card"><span class="m-label" data-i18n="journal.metric.citescore">CiteScore</span><span class="m-valor">20.6</span></div>
+              </div>
             </div>
-            <div class="journal-editor-card">
-              <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/daphne_hermosilla.jpeg" alt="Daphne Hermosilla">
-              <p class="je-nombre">Daphne Hermosilla</p>
-              <p class="je-rol" data-i18n="journal.editor.hermosilla-role">Editora – CEJ y CEJA</p>
-              <span class="je-pais">🇪🇸 <span data-i18n="journal.country.spain">España</span></span>
-            </div>
-            <div class="journal-editor-card">
-              <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/erico_flores.jpeg" alt="Érico M. M. Flores">
-              <p class="je-nombre">Érico M. M. Flores</p>
-              <p class="je-rol" data-i18n="journal.editor.flores-role">Executive Editor – Ultrasonics Sonochemistry</p>
-              <span class="je-pais">🇧🇷 <span data-i18n="journal.country.brazil">Brasil</span></span>
-            </div>
-            <div class="journal-editor-card">
-              <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/2_d78MaOQw1dB0UjlJt7alK.jpg" alt="Ricardo Antonio Torres Palma">
-              <p class="je-nombre">Ricardo Antonio Torres Palma</p>
-              <p class="je-rol" data-i18n="journal.editor.torres-role">Editor – JECE</p>
-              <span class="je-pais">🇨🇴 <span data-i18n="journal.country.colombia">Colombia</span></span>
+
+            <p class="journal-desc" data-i18n="journal.desc">La revista Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, FI 13.2, CiteScore 20.6, revista Q1), publicada por Elsevier, es una revista de investigación internacional que invita a la presentación de trabajos de investigación fundamental originales e innovadores. Su objetivo es proporcionar un foro internacional para la presentación de investigación fundamental original, revisiones interpretativas y debates sobre los últimos avances en ingeniería química. Se aceptan artículos que describan teorías novedosas y su aplicación práctica, así como aquellos que ilustren la transferencia de técnicas de otras disciplinas. También se aceptan informes de trabajos experimentales realizados con rigor y con una interpretación sólida. El enfoque principal se centra en resultados de investigación originales y rigurosos con relevancia genérica. La revista se centra en siete aspectos de la ingeniería química: biomateriales y biotecnologías aplicadas, catálisis, ingeniería de reacciones químicas, ingeniería química computacional, ingeniería química ambiental, ciencia e ingeniería verdes y sostenibles, y nuevos materiales.</p>
+
+            <a href="https://www.sciencedirect.com/journal/chemical-engineering-journal" target="_blank" rel="noopener" class="boton-acento journal-boton-enlace" data-i18n="journal.cta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              Conoce la revista
+            </a>
+          </div>
+
+          <div class="journal-libro-wrap">
+            <div class="journal-libro">
+              <div class="journal-libro-cara journal-libro-lomo"></div>
+              <div class="journal-libro-cara journal-libro-paginas"></div>
+              <div class="journal-libro-cara journal-libro-portada" style="background-image: url('https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/cej_portada.jpg');" role="img" aria-label="Portada del Chemical Engineering Journal"></div>
             </div>
           </div>
         </div>
 
-        <div class="journal-bloque">
-          <h3 class="journal-bloque-titulo" data-i18n="journal.submission-title">Envío de Manuscritos</h3>
-          <p class="journal-envio" data-i18n="journal.submission">Los manuscritos se envían a través de <strong>Editorial Manager</strong>, seleccionando el tipo de artículo <code>VSI: W2R-AO/RT</code> para su inclusión en esta edición especial.</p>
+        <div class="journal-si">
+          <span class="journal-si-label" data-i18n="journal.si-label">Título de la edición especial</span>
+          <span data-i18n="journal.si-title">Advanced Materials and Sustainable Engineering: From Synthesis and Characterization to Circular Economy and Clean Energy Technologies</span>
         </div>
 
         <div class="journal-bloque">
-          <h3 class="journal-bloque-titulo" data-i18n="journal.dates-title">Fechas Clave</h3>
+          <h3 class="journal-bloque-titulo" data-i18n="journal.submission-title">Envío de manuscritos</h3>
+          <p class="journal-envio" data-i18n="journal.submission">Envíe su manuscrito a través de <strong>Editorial Manager®</strong> y seleccione el tipo de artículo <code>XXX: XXX-XX/XX</code> (pendiente; lo asigna la revista) para asegurar que su envío se incluya en esta edición especial. La Guía para Autores está disponible en:</p>
+          <a href="https://www.sciencedirect.com/journal/chemical-engineering-journal/publish/guide-for-authors" target="_blank" rel="noopener" class="boton-acento journal-boton-enlace journal-guide-link" data-i18n="journal.guide-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Guía para Autores
+          </a>
+        </div>
+
+        <div class="journal-bloque">
+          <h3 class="journal-bloque-titulo" data-i18n="journal.dates-title">Fechas clave</h3>
           <div class="fechas-lista">
             <div class="fecha-item">
               <div class="fecha-item-barra"></div>
@@ -3281,11 +3513,48 @@
                 <span class="fecha-valor" data-i18n="journal.date2.val">31 de mayo de 2027</span>
               </div>
             </div>
+            <div class="fecha-item">
+              <div class="fecha-item-barra"></div>
+              <div class="fecha-item-contenido">
+                <span class="fecha-descripcion" data-i18n="journal.date3.desc">Por definir</span>
+                <span class="fecha-valor" data-i18n="journal.date3.val">31 de octubre de 2026</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="journal-cta">
-          <a href="https://www.sciencedirect.com/journal/chemical-engineering-journal" target="_blank" rel="noopener" class="boton-acento" data-i18n="journal.cta">Conoce la Revista</a>
+        <div class="journal-bloque">
+          <h3 class="journal-bloque-titulo" data-i18n="journal.editors-title">Editores invitados</h3>
+          <div class="journal-editores-layout">
+            <div class="journal-editor-exec">
+              <span class="ee-badge" data-i18n="journal.exec-badge">Editor ejecutivo</span>
+              <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/suresh_pillai.png" alt="Suresh Pillai">
+              <p class="ee-nombre">Prof. Suresh Pillai</p>
+              <p class="ee-rol" data-i18n="journal.editor.pillai-role">Editor ejecutivo invitado · CEJ</p>
+              <p class="ee-inst" data-i18n="journal.editor.pillai-inst">Atlantic Technological University – Sligo</p>
+              <span class="ee-pais">🇮🇪 <span data-i18n="journal.country.ireland">Irlanda</span></span>
+            </div>
+            <div class="journal-editores-invitados">
+              <div class="journal-editor-card">
+                <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/won_hee_ryu.png" alt="Won-Hee Ryu">
+                <p class="je-nombre">Prof. Won-Hee Ryu</p>
+                <p class="je-inst" data-i18n="journal.editor.ryu-inst">Yonsei University · Department of Battery Engineering, Seúl</p>
+                <span class="je-pais">🇰🇷 <span data-i18n="journal.country.korea">Corea del Sur</span></span>
+              </div>
+              <div class="journal-editor-card">
+                <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/daphne_hermosilla.png" alt="Daphne Hermosilla">
+                <p class="je-nombre">Prof. Daphne Hermosilla</p>
+                <p class="je-inst" data-i18n="journal.editor.hermosilla-inst">Universidad Politécnica de Madrid</p>
+                <span class="je-pais">🇪🇸 <span data-i18n="journal.country.spain">España</span></span>
+              </div>
+              <div class="journal-editor-card">
+                <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/yichun_wang.png" alt="Yichun Wang">
+                <p class="je-nombre">Prof. Yichun Wang</p>
+                <p class="je-inst" data-i18n="journal.editor.wang-inst">University of Notre Dame · Indiana</p>
+                <span class="je-pais">🇺🇸 <span data-i18n="journal.country.usa">Estados Unidos</span></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3573,7 +3842,7 @@
         'nav.payments': 'Inscripción',
         'nav.schedule': 'Programa',
         'nav.committees': 'Comités',
-        'nav.journal': 'Journal',
+        'nav.journal': 'Special Issues',
         'nav.news': 'Entérate',
         'hero.location': 'Santa Marta,<br>Magdalena',
         'hero.venue': 'Hotel Zuana Beach Resort',
@@ -3674,8 +3943,14 @@
         'committees.role.communications-manager': 'Gestora de Comunicaciones',
         'committees.role.design-manager': 'Gestor de Diseño',
         'committees.role.web-content-manager': 'Gestor de Contenido Web',
-        'journal.title': 'Journal',
-        'journal.intro': 'El Congreso impulsa la publicación científica de alto impacto: los trabajos destacados podrán postularse a una edición especial del <strong>Chemical Engineering Journal (CEJ)</strong> de Elsevier.',
+        'journal.title': 'Special Issues',
+        'journal.intro': 'Los participantes registrados que presenten su trabajo en el <strong>XIII Congreso Internacional de Materiales (XIII CIM)</strong> tendrán la posibilidad de publicar artículos completos en una edición especial (Special Issue) de la siguiente revista, que cubre las áreas de investigación del congreso. Antes de enviar, lea con atención las directrices generales y las instrucciones específicas de preparación del manuscrito (consulte la Guía para Autores de la revista).',
+        'journal.guidelines-title': 'Directrices generales',
+        'journal.guideline1': 'Tras el envío del resumen y el pago de la inscripción, los autores recibirán una Carta de Invitación que confirma su estado.',
+        'journal.guideline2': 'A continuación, los autores podrán dirigirse al sitio web correspondiente de la revista.',
+        'journal.guideline3': 'Los manuscritos deben respetar las normas de publicación de la revista seleccionada. En particular, deben ser de alta novedad y su contenido científico de alta calidad; los datos experimentales deben ser originales y el texto no debe contener secciones publicadas previamente en la literatura.',
+        'journal.guideline4': 'Todos los artículos enviados se someterán a los procedimientos habituales de revisión por pares de la revista.',
+        'journal.selected-title': 'Revista seleccionada para la <span>edición especial</span>',
         'journal.name': 'Chemical Engineering Journal (CEJ)',
         'journal.metric.quartile': 'Cuartil',
         'journal.metric.publisher': 'Editorial',
@@ -3683,25 +3958,30 @@
         'journal.metric.if': 'Factor de Impacto',
         'journal.metric.citescore': 'CiteScore',
         'journal.si-label': 'Título de la edición especial',
-        'journal.si-title': 'From Waste to Resource: Advanced Oxidation/Reduction Technologies Enabling Green Transitions',
-        'journal.desc': 'El Chemical Engineering Journal (CEJ) es una revista internacional Q1 de Elsevier que reúne contribuciones originales en áreas como catálisis, biotecnología e ingeniería ambiental. En el marco del XIII Congreso Internacional de Materiales se realizará un conversatorio con editores de la revista, quienes compartirán de primera mano qué esperan de una contribución y consejos nacidos de la práctica editorial. Los trabajos sobresalientes del congreso podrán ser considerados para esta edición especial.',
-        'journal.editors-title': 'Editores Invitados',
-        'journal.editor.vilar-role': 'Executive Editor – JECE · Co-ordinating Editor – CEJ',
-        'journal.editor.hermosilla-role': 'Editora – CEJ y CEJA',
-        'journal.editor.flores-role': 'Executive Editor – Ultrasonics Sonochemistry',
-        'journal.editor.torres-role': 'Editor – JECE',
-        'journal.country.portugal': 'Portugal',
+        'journal.si-title': 'Advanced Materials and Sustainable Engineering: From Synthesis and Characterization to Circular Economy and Clean Energy Technologies',
+        'journal.desc': 'La revista Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, FI 13.2, CiteScore 20.6, revista Q1), publicada por Elsevier, es una revista de investigación internacional que invita a la presentación de trabajos de investigación fundamental originales e innovadores. Su objetivo es proporcionar un foro internacional para la presentación de investigación fundamental original, revisiones interpretativas y debates sobre los últimos avances en ingeniería química. Se aceptan artículos que describan teorías novedosas y su aplicación práctica, así como aquellos que ilustren la transferencia de técnicas de otras disciplinas. También se aceptan informes de trabajos experimentales realizados con rigor y con una interpretación sólida. El enfoque principal se centra en resultados de investigación originales y rigurosos con relevancia genérica. La revista se centra en siete aspectos de la ingeniería química: biomateriales y biotecnologías aplicadas, catálisis, ingeniería de reacciones químicas, ingeniería química computacional, ingeniería química ambiental, ciencia e ingeniería verdes y sostenibles, y nuevos materiales.',
+        'journal.editors-title': 'Editores invitados',
+        'journal.exec-badge': 'Editor ejecutivo',
+        'journal.editor.pillai-role': 'Editor ejecutivo invitado · CEJ',
+        'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
+        'journal.editor.ryu-inst': 'Yonsei University · Department of Battery Engineering, Seúl',
+        'journal.editor.hermosilla-inst': 'Universidad Politécnica de Madrid',
+        'journal.editor.wang-inst': 'University of Notre Dame · Indiana',
+        'journal.country.ireland': 'Irlanda',
+        'journal.country.korea': 'Corea del Sur',
         'journal.country.spain': 'España',
-        'journal.country.brazil': 'Brasil',
-        'journal.country.colombia': 'Colombia',
-        'journal.submission-title': 'Envío de Manuscritos',
-        'journal.submission': 'Los manuscritos se envían a través de <strong>Editorial Manager</strong>, seleccionando el tipo de artículo <code>VSI: W2R-AO/RT</code> para su inclusión en esta edición especial.',
-        'journal.dates-title': 'Fechas Clave',
+        'journal.country.usa': 'Estados Unidos',
+        'journal.submission-title': 'Envío de manuscritos',
+        'journal.submission': 'Envíe su manuscrito a través de <strong>Editorial Manager®</strong> y seleccione el tipo de artículo <code>XXX: XXX-XX/XX</code> (pendiente; lo asigna la revista) para asegurar que su envío se incluya en esta edición especial. La Guía para Autores está disponible en:',
+        'journal.guide-cta': 'Guía para Autores',
+        'journal.dates-title': 'Fechas clave',
         'journal.date1.desc': 'Apertura de envíos',
         'journal.date1.val': '1 de noviembre de 2026',
         'journal.date2.desc': 'Fecha límite de envío',
         'journal.date2.val': '31 de mayo de 2027',
-        'journal.cta': 'Conoce la Revista',
+        'journal.date3.desc': 'Por definir',
+        'journal.date3.val': '31 de octubre de 2026',
+        'journal.cta': 'Conoce la revista',
         'news.title': 'Entérate',
         'footer.more-info': 'Más información:',
         'footer.congress': 'XIII Congreso Internacional de Materiales',
@@ -3742,7 +4022,7 @@
         'nav.payments': 'Registration',
         'nav.schedule': 'Schedule',
         'nav.committees': 'Committees',
-        'nav.journal': 'Journal',
+        'nav.journal': 'Special Issues',
         'nav.news': 'News',
         'hero.location': 'Santa Marta,<br>Magdalena',
         'hero.venue': 'Hotel Zuana Beach Resort',
@@ -3844,8 +4124,14 @@
         'committees.role.communications-manager': 'Communications Manager',
         'committees.role.design-manager': 'Design Manager',
         'committees.role.web-content-manager': 'Web Content Manager',
-        'journal.title': 'Journal',
-        'journal.intro': 'The Congress promotes high-impact scientific publishing: outstanding papers may be submitted to a special issue of Elsevier\'s <strong>Chemical Engineering Journal (CEJ)</strong>.',
+        'journal.title': 'Special Issues',
+        'journal.intro': 'Registered participants presenting their work at the <strong>XIII International Materials Congress (XIII CIM)</strong> will have the possibility to publish full papers in a Special Issue of the following journal, covering the research fields of the congress. Before submission, please read carefully the following general guidelines and the specific instructions on manuscript preparation (please see the Guide for Authors of the Journal).',
+        'journal.guidelines-title': 'General Guidelines',
+        'journal.guideline1': 'After abstract submission and registration payment, authors will receive an Invitation Letter confirming their status.',
+        'journal.guideline2': 'After that, authors are welcome to proceed to the corresponding website of the journal.',
+        'journal.guideline3': 'The manuscripts must respect the publication rules of the selected journal. In particular, they need to be of high novelty and the scientific content of high quality; the experimental data must be original and the text should not contain any sections previously published in the literature.',
+        'journal.guideline4': 'All submitted papers will be subjected to the regular peer-reviewing procedures of the journal.',
+        'journal.selected-title': 'Journal selected for the <span>Special Issue</span>',
         'journal.name': 'Chemical Engineering Journal (CEJ)',
         'journal.metric.quartile': 'Quartile',
         'journal.metric.publisher': 'Publisher',
@@ -3853,24 +4139,29 @@
         'journal.metric.if': 'Impact Factor',
         'journal.metric.citescore': 'CiteScore',
         'journal.si-label': 'Special issue title',
-        'journal.si-title': 'From Waste to Resource: Advanced Oxidation/Reduction Technologies Enabling Green Transitions',
-        'journal.desc': 'The Chemical Engineering Journal (CEJ) is an international Q1 Elsevier journal that brings together original contributions in areas such as catalysis, biotechnology and environmental engineering. As part of the XIII International Materials Congress, a panel discussion with the journal\'s editors will be held, where they will share first-hand what they expect from a contribution and advice born from editorial practice. Outstanding congress papers may be considered for this special issue.',
+        'journal.si-title': 'Advanced Materials and Sustainable Engineering: From Synthesis and Characterization to Circular Economy and Clean Energy Technologies',
+        'journal.desc': 'The Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, IF 13.2, CiteScore 20.6, Q1 Journal), published by Elsevier, is an international research journal that invites the submission of original and innovative fundamental research. It aims to provide an international forum for the presentation of original fundamental research, interpretative reviews and discussion of the latest developments in chemical engineering. Papers describing novel theories and their practical application are welcome, as are those illustrating the transfer of techniques from other disciplines. Reports of carefully executed experimental work with sound interpretation are also welcome. The main focus is on original and rigorous research results with generic relevance. The journal focuses on seven aspects of chemical engineering: applied biomaterials and biotechnologies, catalysis, chemical reaction engineering, computational chemical engineering, environmental chemical engineering, green and sustainable science and engineering, and novel materials.',
         'journal.editors-title': 'Guest Editors',
-        'journal.editor.vilar-role': 'Executive Editor – JECE · Co-ordinating Editor – CEJ',
-        'journal.editor.hermosilla-role': 'Editor – CEJ & CEJA',
-        'journal.editor.flores-role': 'Executive Editor – Ultrasonics Sonochemistry',
-        'journal.editor.torres-role': 'Editor – JECE',
-        'journal.country.portugal': 'Portugal',
+        'journal.exec-badge': 'Executive Editor',
+        'journal.editor.pillai-role': 'Executive Guest Editor · CEJ',
+        'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
+        'journal.editor.ryu-inst': 'Yonsei University · Department of Battery Engineering, Seoul',
+        'journal.editor.hermosilla-inst': 'Polytechnic University of Madrid',
+        'journal.editor.wang-inst': 'University of Notre Dame · Indiana',
+        'journal.country.ireland': 'Ireland',
+        'journal.country.korea': 'South Korea',
         'journal.country.spain': 'Spain',
-        'journal.country.brazil': 'Brazil',
-        'journal.country.colombia': 'Colombia',
+        'journal.country.usa': 'United States',
         'journal.submission-title': 'Manuscript Submission',
-        'journal.submission': 'Manuscripts are submitted through <strong>Editorial Manager</strong>, selecting the article type <code>VSI: W2R-AO/RT</code> for inclusion in this special issue.',
+        'journal.submission': 'Submit your manuscript via <strong>Editorial Manager®</strong> and select the article type <code>XXX: XXX-XX/XX</code> (pending; provided by the journal) to ensure that your submission is included in this Special Issue. The Guide for Authors is available at:',
+        'journal.guide-cta': 'Guide for Authors',
         'journal.dates-title': 'Key Dates',
         'journal.date1.desc': 'Submission opens',
         'journal.date1.val': 'November 1, 2026',
         'journal.date2.desc': 'Submission deadline',
         'journal.date2.val': 'May 31, 2027',
+        'journal.date3.desc': 'To be defined',
+        'journal.date3.val': 'October 31, 2026',
         'journal.cta': 'Explore the Journal',
         'news.title': 'Find Out',
         'footer.more-info': 'More Information:',
