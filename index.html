@@ -1825,8 +1825,8 @@
     /* Editores: ejecutivo (jefe) a la izquierda, invitados a la derecha */
     .journal-editores-layout {
       display: grid;
-      grid-template-columns: 0.9fr 1.6fr;
-      gap: 1.5rem;
+      grid-template-columns: 0.62fr 2.1fr;
+      gap: 1.25rem;
       align-items: stretch;
     }
     .journal-editor-exec {
@@ -1835,7 +1835,7 @@
       background: linear-gradient(150deg, rgba(173,255,47,0.12), rgba(255,255,255,0.03));
       border: 0.125rem solid rgba(173,255,47,0.45);
       border-radius: 1rem;
-      padding: 2.25rem 1.5rem;
+      padding: 1.75rem 1.15rem;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -1857,41 +1857,59 @@
       box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.45), 0 0 2rem rgba(173,255,47,0.14);
     }
     .journal-editor-exec .ee-badge {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       font-weight: 700;
       color: #111;
       background: var(--color-acento);
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.65rem;
       border-radius: 2rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
     .journal-editor-exec img {
-      width: 8.5rem;
-      height: 8.5rem;
+      width: 6.75rem;
+      height: 6.75rem;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
       border: 0.1875rem solid var(--color-acento);
       box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.4), 0 0 0 0.4rem rgba(173,255,47,0.1);
     }
-    .journal-editor-exec .ee-nombre { font-family: var(--fuente-titulo); font-size: 1.25rem; font-weight: 900; color: white; margin-bottom: 0.4rem; }
-    .journal-editor-exec .ee-rol { font-size: 0.85rem; color: var(--color-acento); font-weight: 700; margin-bottom: 0.5rem; }
-    .journal-editor-exec .ee-inst { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.4; margin-bottom: 0.6rem; }
-    .journal-editor-exec .ee-pais { font-size: 0.85rem; color: rgba(255,255,255,0.8); display: inline-flex; align-items: center; gap: 0.35rem; }
+    .journal-editor-exec .ee-nombre { font-family: var(--fuente-titulo); font-size: 1.05rem; font-weight: 900; color: white; margin-bottom: 0.4rem; line-height: 1.25; }
+    .journal-editor-exec .ee-rol { font-size: 0.78rem; color: var(--color-acento); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+    .journal-editor-exec .ee-inst { font-size: 0.75rem; color: rgba(255,255,255,0.7); line-height: 1.4; margin-bottom: 0.75rem; }
+    .journal-editor-exec .ee-expertise-label,
+    .journal-editor-card .je-expertise-label {
+      display: block;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 0.2rem;
+    }
+    .journal-editor-exec .ee-expertise {
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 0.85rem;
+    }
+    .journal-editor-exec .ee-pais { font-size: 0.8rem; color: rgba(255,255,255,0.8); display: inline-flex; align-items: center; gap: 0.35rem; margin-top: auto; }
     .journal-editores-invitados {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
     }
-    .journal-editor-card .je-inst { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin-bottom: 0.6rem; }
+    .journal-editor-card .je-inst { font-size: 0.76rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin-bottom: 0.65rem; }
+    .journal-editor-card .je-expertise { font-size: 0.7rem; line-height: 1.5; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; }
+    .journal-editor-card .je-pais { margin-top: auto; }
 
     @media (max-width: 62rem) {
       .journal-main { grid-template-columns: 1fr; }
       .journal-libro-wrap { order: -1; }
       .journal-editores-layout { grid-template-columns: 1fr; }
-      .journal-editores-invitados { grid-template-columns: repeat(3, 1fr); }
+      .journal-editores-invitados { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 40rem) {
       .journal-datos { grid-template-columns: 1fr; }
@@ -3685,6 +3703,7 @@
               <p class="ee-nombre">Prof. Suresh Pillai</p>
               <p class="ee-rol" data-i18n="journal.editor.pillai-role">Editor ejecutivo invitado · CEJ</p>
               <p class="ee-inst" data-i18n="journal.editor.pillai-inst">Atlantic Technological University – Sligo</p>
+              <p class="ee-expertise"><span class="ee-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.pillai-expertise">Nanotecnología, Energía, Materiales, Fotocatálisis, Materiales Funcionales Avanzados, Materiales de Ingeniería</span></p>
               <span class="ee-pais">🇮🇪 <span data-i18n="journal.country.ireland">Irlanda</span></span>
             </div>
             <div class="journal-editores-invitados">
@@ -3692,19 +3711,29 @@
                 <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/won_hee_ryu.jpg" alt="Won-Hee Ryu">
                 <p class="je-nombre">Prof. Won-Hee Ryu</p>
                 <p class="je-inst" data-i18n="journal.editor.ryu-inst">Yonsei University · Department of Battery Engineering, Seúl</p>
+                <p class="je-expertise"><span class="je-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.ryu-expertise">Materiales de Energía, Electroquímica, Baterías, Electrocatálisis, Almacenamiento de Energía, Nanomateriales, Tecnología Ambiental</span></p>
                 <span class="je-pais">🇰🇷 <span data-i18n="journal.country.korea">Corea del Sur</span></span>
               </div>
               <div class="journal-editor-card">
                 <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/daphne_hermosilla.jpg" alt="Daphne Hermosilla">
                 <p class="je-nombre">Prof. Daphne Hermosilla</p>
                 <p class="je-inst" data-i18n="journal.editor.hermosilla-inst">Universidad Politécnica de Madrid</p>
+                <p class="je-expertise"><span class="je-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.hermosilla-expertise">Procesos de Oxidación Avanzada, Fotocatálisis, Electrocatálisis, Energía, Biogás</span></p>
                 <span class="je-pais">🇪🇸 <span data-i18n="journal.country.spain">España</span></span>
               </div>
               <div class="journal-editor-card">
                 <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/yichun_wang.png" alt="Yichun Wang">
                 <p class="je-nombre">Prof. Yichun Wang</p>
                 <p class="je-inst" data-i18n="journal.editor.wang-inst">University of Notre Dame · Indiana</p>
+                <p class="je-expertise"><span class="je-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.wang-expertise">Biomateriales, Nanomateriales, Puntos de carbono, Grafeno, Administración de fármacos, Cribado de fármacos</span></p>
                 <span class="je-pais">🇺🇸 <span data-i18n="journal.country.usa">Estados Unidos</span></span>
+              </div>
+              <div class="journal-editor-card">
+                <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/darwin_augusto_torres_ceron.jpg" alt="Darwin Augusto Torres-Ceron">
+                <p class="je-nombre">Prof. Darwin Augusto Torres-Ceron</p>
+                <p class="je-inst" data-i18n="journal.editor.torres-inst">Universidad Nacional de Colombia</p>
+                <p class="je-expertise"><span class="je-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.torres-expertise">Ciencia de Materiales, Nanomateriales Funcionales, Oxidación Electrolítica por Plasma, Fotocatálisis</span></p>
+                <span class="je-pais">🇨🇴 <span data-i18n="journal.country.colombia">Colombia</span></span>
               </div>
             </div>
           </div>
@@ -4115,15 +4144,23 @@
         'journal.desc': 'La revista Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, FI 13.2, CiteScore 20.6, revista Q1), publicada por Elsevier, es una revista de investigación internacional que invita a la presentación de trabajos de investigación fundamental originales e innovadores. Su objetivo es proporcionar un foro internacional para la presentación de investigación fundamental original, revisiones interpretativas y debates sobre los últimos avances en ingeniería química. Se aceptan artículos que describan teorías novedosas y su aplicación práctica, así como aquellos que ilustren la transferencia de técnicas de otras disciplinas. También se aceptan informes de trabajos experimentales realizados con rigor y con una interpretación sólida. El enfoque principal se centra en resultados de investigación originales y rigurosos con relevancia genérica. La revista se centra en siete aspectos de la ingeniería química: biomateriales y biotecnologías aplicadas, catálisis, ingeniería de reacciones químicas, ingeniería química computacional, ingeniería química ambiental, ciencia e ingeniería verdes y sostenibles, y nuevos materiales.',
         'journal.editors-title': 'Editores invitados',
         'journal.exec-badge': 'Editor ejecutivo',
+        'journal.expertise-label': 'Áreas de expertise',
         'journal.editor.pillai-role': 'Editor ejecutivo invitado · CEJ',
         'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
+        'journal.editor.pillai-expertise': 'Nanotecnología, Energía, Materiales, Fotocatálisis, Materiales Funcionales Avanzados, Materiales de Ingeniería',
         'journal.editor.ryu-inst': 'Yonsei University · Department of Battery Engineering, Seúl',
+        'journal.editor.ryu-expertise': 'Materiales de Energía, Electroquímica, Baterías, Electrocatálisis, Almacenamiento de Energía, Nanomateriales, Tecnología Ambiental',
         'journal.editor.hermosilla-inst': 'Universidad Politécnica de Madrid',
+        'journal.editor.hermosilla-expertise': 'Procesos de Oxidación Avanzada, Fotocatálisis, Electrocatálisis, Energía, Biogás',
         'journal.editor.wang-inst': 'University of Notre Dame · Indiana',
+        'journal.editor.wang-expertise': 'Biomateriales, Nanomateriales, Puntos de carbono, Grafeno, Administración de fármacos, Cribado de fármacos',
+        'journal.editor.torres-inst': 'Universidad Nacional de Colombia',
+        'journal.editor.torres-expertise': 'Ciencia de Materiales, Nanomateriales Funcionales, Oxidación Electrolítica por Plasma, Fotocatálisis',
         'journal.country.ireland': 'Irlanda',
         'journal.country.korea': 'Corea del Sur',
         'journal.country.spain': 'España',
         'journal.country.usa': 'Estados Unidos',
+        'journal.country.colombia': 'Colombia',
         'journal.submission-title': 'Envío de manuscritos',
         'journal.submission': 'Envíe su manuscrito a través de <strong>Editorial Manager®</strong> y seleccione el tipo de artículo <code>XXX: XXX-XX/XX</code> (pendiente; lo asigna la revista) para asegurar que su envío se incluya en esta edición especial. La Guía para Autores está disponible en:',
         'journal.guide-cta': 'Guía para Autores',
@@ -4296,15 +4333,23 @@
         'journal.desc': 'The Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, IF 13.2, CiteScore 20.6, Q1 Journal), published by Elsevier, is an international research journal that invites the submission of original and innovative fundamental research. It aims to provide an international forum for the presentation of original fundamental research, interpretative reviews and discussion of the latest developments in chemical engineering. Papers describing novel theories and their practical application are welcome, as are those illustrating the transfer of techniques from other disciplines. Reports of carefully executed experimental work with sound interpretation are also welcome. The main focus is on original and rigorous research results with generic relevance. The journal focuses on seven aspects of chemical engineering: applied biomaterials and biotechnologies, catalysis, chemical reaction engineering, computational chemical engineering, environmental chemical engineering, green and sustainable science and engineering, and novel materials.',
         'journal.editors-title': 'Guest Editors',
         'journal.exec-badge': 'Executive Editor',
+        'journal.expertise-label': 'Areas of Expertise',
         'journal.editor.pillai-role': 'Executive Guest Editor · CEJ',
         'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
+        'journal.editor.pillai-expertise': 'Nanotechnology, Energy, Materials, Photocatalysis, Advanced Functional Materials, Engineering Materials',
         'journal.editor.ryu-inst': 'Yonsei University · Department of Battery Engineering, Seoul',
+        'journal.editor.ryu-expertise': 'Energy Materials, Electrochemistry, Batteries, Electrocatalysis, Energy Storage, Nanomaterials, Environmental Technology',
         'journal.editor.hermosilla-inst': 'Polytechnic University of Madrid',
+        'journal.editor.hermosilla-expertise': 'Advanced Oxidation Processes, Photocatalysis, Electrocatalysis, Energy, Biogas',
         'journal.editor.wang-inst': 'University of Notre Dame · Indiana',
+        'journal.editor.wang-expertise': 'Biomaterials, Nanomaterials, Carbon dots, Graphene, Drug delivery, Drug screening',
+        'journal.editor.torres-inst': 'National University of Colombia',
+        'journal.editor.torres-expertise': 'Materials Science, Functional Nanomaterials, Plasma Electrolytic Oxidation, Photocatalysis',
         'journal.country.ireland': 'Ireland',
         'journal.country.korea': 'South Korea',
         'journal.country.spain': 'Spain',
         'journal.country.usa': 'United States',
+        'journal.country.colombia': 'Colombia',
         'journal.submission-title': 'Manuscript Submission',
         'journal.submission': 'Submit your manuscript via <strong>Editorial Manager®</strong> and select the article type <code>XXX: XXX-XX/XX</code> (pending; provided by the journal) to ensure that your submission is included in this Special Issue. The Guide for Authors is available at:',
         'journal.guide-cta': 'Guide for Authors',
