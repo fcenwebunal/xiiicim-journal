@@ -1478,21 +1478,30 @@
       gap: 1.25rem;
     }
     .journal-editor-card {
-      background: rgba(255,255,255,0.04);
-      border: 0.0625rem solid rgba(173,255,47,0.15);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(150deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border: 0.125rem solid rgba(255,255,255,0.32);
       border-radius: 0.75rem;
       padding: 1.5rem 1.25rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+      box-shadow: 0 0.75rem 2rem rgba(0,0,0,0.3);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .journal-editor-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 0.1875rem;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
     }
     .journal-editor-card:hover {
       transform: translateY(-0.375rem);
-      background: rgba(173,255,47,0.07);
-      border-color: rgba(173,255,47,0.45);
-      box-shadow: 0 0.75rem 2rem rgba(0,0,0,0.4), 0 0 1.5rem rgba(173,255,47,0.1);
+      border-color: rgba(255,255,255,0.6);
+      box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.4), 0 0 2rem rgba(255,255,255,0.1);
     }
     .journal-editor-card img {
       width: 6.5rem;
@@ -1500,7 +1509,8 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 0.125rem solid rgba(173,255,47,0.35);
+      border: 0.1875rem solid rgba(255,255,255,0.7);
+      box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.35);
     }
     .journal-editor-card .je-nombre { font-family: var(--fuente-titulo); font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; line-height: 1.25; }
     .journal-editor-card .je-rol { font-size: 0.8rem; color: var(--color-acento); line-height: 1.4; margin-bottom: 0.6rem; }
@@ -1823,6 +1833,42 @@
     .journal-guide-link { margin-top: 1rem; }
 
     /* Editores: ejecutivo (jefe) a la izquierda, invitados a la derecha */
+    .journal-editores-titulos {
+      display: grid;
+      grid-template-columns: 0.62fr 2.1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .journal-titulo-exec,
+    .journal-titulo-invitados {
+      font-family: var(--fuente-titulo);
+      font-size: 1rem;
+      font-weight: 900;
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .journal-titulo-exec::before,
+    .journal-titulo-invitados::before {
+      content: '';
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .journal-titulo-exec {
+      color: var(--color-acento);
+      border-bottom: 0.125rem solid var(--color-acento);
+    }
+    .journal-titulo-exec::before { background: var(--color-acento); }
+    .journal-titulo-invitados {
+      color: white;
+      border-bottom: 0.125rem solid rgba(255,255,255,0.55);
+    }
+    .journal-titulo-invitados::before { background: white; }
+
     .journal-editores-layout {
       display: grid;
       grid-template-columns: 0.62fr 2.1fr;
@@ -1855,17 +1901,6 @@
       transform: translateY(-0.375rem);
       border-color: var(--color-acento);
       box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.45), 0 0 2rem rgba(173,255,47,0.14);
-    }
-    .journal-editor-exec .ee-badge {
-      font-size: 0.62rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: #111;
-      background: var(--color-acento);
-      padding: 0.25rem 0.65rem;
-      border-radius: 2rem;
-      margin-bottom: 1.1rem;
     }
     .journal-editor-exec img {
       width: 6.75rem;
@@ -1907,6 +1942,7 @@
     @media (max-width: 62rem) {
       .journal-main { grid-template-columns: 1fr; }
       .journal-libro-wrap { order: -1; }
+      .journal-editores-titulos { grid-template-columns: 1fr; gap: 0.75rem; }
       .journal-editores-layout { grid-template-columns: 1fr; }
       .journal-editores-invitados { grid-template-columns: repeat(2, 1fr); }
     }
@@ -3694,10 +3730,12 @@
         </div>
 
         <div class="journal-bloque">
-          <h3 class="journal-bloque-titulo" data-i18n="journal.editors-title">Editores invitados</h3>
+          <div class="journal-editores-titulos">
+            <h3 class="journal-titulo-exec" data-i18n="journal.exec-title">Editor Ejecutivo</h3>
+            <h3 class="journal-titulo-invitados" data-i18n="journal.editors-title">Editores invitados</h3>
+          </div>
           <div class="journal-editores-layout">
             <div class="journal-editor-exec">
-              <span class="ee-badge" data-i18n="journal.exec-badge">Editor ejecutivo</span>
               <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/suresh_pillai.jpg" alt="Suresh Pillai">
               <p class="ee-nombre">Prof. Suresh Pillai</p>
               <p class="ee-inst" data-i18n="journal.editor.pillai-inst">Atlantic Technological University – Sligo</p>
@@ -4141,7 +4179,7 @@
         'journal.si-title': 'Advanced Materials and Sustainable Engineering: From Synthesis and Characterization to Circular Economy and Clean Energy Technologies',
         'journal.desc': 'La revista Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, FI 12.5, CiteScore 19.6, revista Q1), publicada por Elsevier, es una revista de investigación internacional que invita a la presentación de trabajos de investigación fundamental originales e innovadores. Su objetivo es proporcionar un foro internacional para la presentación de investigación fundamental original, revisiones interpretativas y debates sobre los últimos avances en ingeniería química. Se aceptan artículos que describan teorías novedosas y su aplicación práctica, así como aquellos que ilustren la transferencia de técnicas de otras disciplinas. También se aceptan informes de trabajos experimentales realizados con rigor y con una interpretación sólida. El enfoque principal se centra en resultados de investigación originales y rigurosos con relevancia genérica. La revista se centra en siete aspectos de la ingeniería química: biomateriales y biotecnologías aplicadas, catálisis, ingeniería de reacciones químicas, ingeniería química computacional, ingeniería química ambiental, ciencia e ingeniería verdes y sostenibles, y nuevos materiales.',
         'journal.editors-title': 'Editores invitados',
-        'journal.exec-badge': 'Editor ejecutivo',
+        'journal.exec-title': 'Editor Ejecutivo',
         'journal.expertise-label': 'Áreas de expertise',
         'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
         'journal.editor.pillai-expertise': 'Nanotecnología, Energía, Materiales, Fotocatálisis, Materiales Funcionales Avanzados, Materiales de Ingeniería',
@@ -4329,7 +4367,7 @@
         'journal.si-title': 'Advanced Materials and Sustainable Engineering: From Synthesis and Characterization to Circular Economy and Clean Energy Technologies',
         'journal.desc': 'The Chemical Engineering Journal (CEJ) (ISSN: 1873-3212, IF 12.5, CiteScore 19.6, Q1 Journal), published by Elsevier, is an international research journal that invites the submission of original and innovative fundamental research. It aims to provide an international forum for the presentation of original fundamental research, interpretative reviews and discussion of the latest developments in chemical engineering. Papers describing novel theories and their practical application are welcome, as are those illustrating the transfer of techniques from other disciplines. Reports of carefully executed experimental work with sound interpretation are also welcome. The main focus is on original and rigorous research results with generic relevance. The journal focuses on seven aspects of chemical engineering: applied biomaterials and biotechnologies, catalysis, chemical reaction engineering, computational chemical engineering, environmental chemical engineering, green and sustainable science and engineering, and novel materials.',
         'journal.editors-title': 'Guest Editors',
-        'journal.exec-badge': 'Executive Editor',
+        'journal.exec-title': 'Executive Editor',
         'journal.expertise-label': 'Areas of Expertise',
         'journal.editor.pillai-inst': 'Atlantic Technological University – Sligo',
         'journal.editor.pillai-expertise': 'Nanotechnology, Energy, Materials, Photocatalysis, Advanced Functional Materials, Engineering Materials',
