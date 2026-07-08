@@ -1930,6 +1930,7 @@
       margin-bottom: 0.85rem;
     }
     .journal-editor-exec .ee-pais { font-size: 0.8rem; color: rgba(255,255,255,0.8); display: inline-flex; align-items: center; gap: 0.35rem; margin-top: auto; }
+    .journal-titulo-invitados--movil { display: none; }
     .journal-editores-invitados {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1943,6 +1944,8 @@
       .journal-main { grid-template-columns: 1fr; }
       .journal-libro-wrap { order: -1; }
       .journal-editores-titulos { grid-template-columns: 1fr; gap: 0.75rem; }
+      .journal-editores-titulos .journal-titulo-invitados { display: none; }
+      .journal-titulo-invitados--movil { display: flex; margin-bottom: 1.25rem; }
       .journal-editores-layout { grid-template-columns: 1fr; }
       .journal-editores-invitados { grid-template-columns: repeat(2, 1fr); }
     }
@@ -3742,7 +3745,9 @@
               <p class="ee-expertise"><span class="ee-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.pillai-expertise">Nanotecnología, Energía, Materiales, Fotocatálisis, Materiales Funcionales Avanzados, Materiales de Ingeniería</span></p>
               <span class="ee-pais">🇮🇪 <span data-i18n="journal.country.ireland">Irlanda</span></span>
             </div>
-            <div class="journal-editores-invitados">
+            <div class="journal-editores-invitados-wrap">
+              <h3 class="journal-titulo-invitados journal-titulo-invitados--movil" data-i18n="journal.editors-title">Editores invitados</h3>
+              <div class="journal-editores-invitados">
               <div class="journal-editor-card">
                 <img src="https://fcen.unal.edu.co/fileadmin/Eventos/xiii-congreso-internacional-de-materiales/assets/won_hee_ryu.jpg" alt="Won-Hee Ryu">
                 <p class="je-nombre">Prof. Won-Hee Ryu</p>
@@ -3770,6 +3775,7 @@
                 <p class="je-inst" data-i18n="journal.editor.torres-inst">Universidad Nacional de Colombia</p>
                 <p class="je-expertise"><span class="je-expertise-label" data-i18n="journal.expertise-label">Áreas de expertise</span><span data-i18n="journal.editor.torres-expertise">Ciencia de Materiales, Nanomateriales Funcionales, Oxidación Electrolítica por Plasma, Fotocatálisis</span></p>
                 <span class="je-pais">🇨🇴 <span data-i18n="journal.country.colombia">Colombia</span></span>
+              </div>
               </div>
             </div>
           </div>
